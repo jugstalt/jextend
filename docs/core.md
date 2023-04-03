@@ -37,7 +37,9 @@ The jExtObject is the main object returned by the jExt function. It contains the
     `html()`: Get or set the HTML contents of the selected elements.
     `text()`: Get or set the text contents of the selected elements.
     `attr()`: Get or set attributes of the selected elements.
+    `data()`: Get or set custom data object of the selected elements.
     `css()`: Get or set the CSS styles of the selected elements.
+    `val()`: Get or set the CSS styles of the selected elements.
 
 Utility Methods
 
@@ -48,3 +50,25 @@ jExt also includes various utility methods that can be helpful in different scen
     `$.isFunction()`: Check if a given value is a function.
 
 For a complete list of core methods and features, refer to the API documentation.
+
+Here are the examples for the core methods:
+
+```javascript
+// css() with key and value
+$('#elementId').css('background-color', 'red');
+
+// css() with an object
+$('#elementId').css({
+  'backgroundColor': 'blue',
+  'fontSize': '16px'
+});
+
+// text()
+$('#elementId').text('This is a sample text');
+
+// attr()
+$('#elementId').attr('data-custom', 'customValue');
+
+// val()
+$('#inputElement').val('This is a new value');
+```
