@@ -60,3 +60,5 @@ $.ajax({
 
 These examples demonstrate how to use jExt's AJAX method to make HTTP requests and handle the responses, 
 making it easy to interact with APIs and server-side resources.
+
+[Next: Utilities](utilities.md)

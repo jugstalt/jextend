@@ -36,3 +36,5 @@ console.log(shortWords); // ['apple', 'date']
 ```
 
 These utility functions in jExt can help you perform common tasks with less code, making your JavaScript more efficient and easier to understand.
+
+[Next: Extensions](extensions.md)

@@ -49,3 +49,5 @@ handle events, perform Ajax requests, and more.
 
 For more detailed information on each feature, check out the corresponding documentation pages linked in the Table of Contents above.
 
+[Next: Core](docs/core.md)
+

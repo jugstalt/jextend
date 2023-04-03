@@ -27,3 +27,5 @@ $('input[type="text"]');
 ```
 
 For a comprehensive list of supported selectors and more detailed information, refer to the official jExt documentation.
+
+[Next: DOM Manipulation](dom.md)

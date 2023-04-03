@@ -44,3 +44,5 @@ $('<li>New List Item</li>').appendTo('ul');
 $('<p>New Paragraph</p>').insertBefore('div');
 
 ```
+
+[Next: Events](events.md)

@@ -72,3 +72,5 @@ $('#elementId').attr('data-custom', 'customValue');
 // val()
 $('#inputElement').val('This is a new value');
 ```
+
+[Next: Selectors](selectors.md)
