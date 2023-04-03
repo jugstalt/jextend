@@ -4,10 +4,26 @@ jExt is a lightweight JavaScript library designed to simplify the client-side sc
 providing the most commonly used features without the overhead of a larger library. jExt aims to be fast, efficient, and easy to use while maintaining compatibility with 
 existing jQuery projects.
 
-- Select elements: `jExt('#myElement')`
-- Manipulate DOM: `jExt('#myElement').html('Hello, World!')`
-- Handle events: `jExt('#myButton').on('click', () => alert('Button clicked!'))`
-- Perform Ajax requests: `jExt.ajax({ url: 'https://api.example.com/data', success: data => console.log(data) })`
+- Select elements: 
+``` Javascript 
+    $('#myElement')
+```
+
+- Manipulate DOM: 
+``` Javascript 
+    $('#myElement').html('Hello, World!')
+```
+
+- Handle events: 
+``` Javascript 
+    $('#myButton').on('click', () => alert('Button clicked!'))
+```
+
+- Perform Ajax requests: 
+
+``` Javascript 
+    $.ajax({ url: 'https://api.example.com/data', success: data => console.log(data) })
+```
 
 ## Table of Contents
 
