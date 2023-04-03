@@ -34,20 +34,20 @@ const wrappedElement = $(document.querySelector('#myElement'));
 
 The jExtObject is the main object returned by the jExt function. It contains the selected or created elements and provides various methods for manipulating them. Some of the key methods include:
 
-    `html()`: Get or set the HTML contents of the selected elements.
-    `text()`: Get or set the text contents of the selected elements.
-    `attr()`: Get or set attributes of the selected elements.
-    `data()`: Get or set custom data object of the selected elements.
-    `css()`: Get or set the CSS styles of the selected elements.
-    `val()`: Get or set the CSS styles of the selected elements.
+- `html()`: Get or set the HTML contents of the selected elements.
+- `text()`: Get or set the text contents of the selected elements.
+- `attr()`: Get or set attributes of the selected elements.
+- `data()`: Get or set custom data object of the selected elements.
+- `css()`: Get or set the CSS styles of the selected elements.
+- `val()`: Get or set the CSS styles of the selected elements.
 
 Utility Methods
 
 jExt also includes various utility methods that can be helpful in different scenarios:
 
-    `$.extend()`: Extend the jExt library or an object with additional methods or properties.
-    `$.isArray()`: Check if a given value is an array.
-    `$.isFunction()`: Check if a given value is a function.
+- `$.extend()`: Extend the jExt library or an object with additional methods or properties.
+- `$.isArray()`: Check if a given value is an array.
+- `$.isFunction()`: Check if a given value is a function.
 
 For a complete list of core methods and features, refer to the API documentation.
 
