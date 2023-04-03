@@ -1,8 +1,12 @@
-# jExt - A Lightweight JavaScript Library
+# jExt - A Lightweight JavaScript Library (beta)
 
 jExt is a lightweight JavaScript library designed to simplify the client-side scripting of HTML. Its primary motivation is to offer a minimalistic alternative to jQuery, 
 providing the most commonly used features without the overhead of a larger library. jExt aims to be fast, efficient, and easy to use while maintaining compatibility with 
 existing jQuery projects.
+
+> **_NOTE:_**
+   This is a beta version an not for production!
+   You can try and give feedback, Thx
 
 - Select elements: 
 ``` Javascript 
