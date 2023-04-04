@@ -8,22 +8,22 @@ Below are some examples of common selector patterns:
 
 ``` javascript
 // Select all elements with the class 'exampleClass'
-$('.exampleClass');
+jExt('.exampleClass');
 
 // Select the element with the ID 'exampleId'
-$('#exampleId');
+jExt('#exampleId');
 
 // Select all 'p' elements
-$('p');
+jExt('p');
 
 // Select all 'li' elements that are children of 'ul' elements
-$('ul > li');
+jExt('ul > li');
 
 // Select the first 'div' element
-$('div:first');
+jExt('div:first');
 
 // Select all 'input' elements of type 'text'
-$('input[type="text"]');
+jExt('input[type="text"]');
 ```
 
 For a comprehensive list of supported selectors and more detailed information, refer to the official jExt documentation.

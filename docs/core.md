@@ -11,7 +11,7 @@ The main jExt (or $) function is the entry point for most operations in the libr
 To select elements, simply pass a CSS selector string to the jExt function:
 
 ```javascript
-const myElement = $('#myElement');
+const myElement = jExt('#myElement');
 ```
 
 ### Creating Elements
@@ -19,7 +19,7 @@ const myElement = $('#myElement');
 To create new elements, pass an HTML string to the jExt function:
 
 ```javascript
-const newElement = $('<div class="myNewElement">Hello, World!</div>');
+const newElement = jExt('<div class="myNewElement">Hello, World!</div>');
 ```
 
 ### Wrapping Existing DOM Elements
@@ -27,7 +27,7 @@ const newElement = $('<div class="myNewElement">Hello, World!</div>');
 To wrap an existing DOM element with the jExt library, pass the DOM element to the jExt function:
 
 ```javascript
-const wrappedElement = $(document.querySelector('#myElement'));
+const wrappedElement = jExt(document.querySelector('#myElement'));
 ```
 
 ## jExtObject
@@ -54,23 +54,25 @@ For a complete list of core methods and features, refer to the API documentation
 Here are the examples for the core methods:
 
 ```javascript
-// css() with key and value
-$('#elementId').css('background-color', 'red');
+function($) {
+    // css() with key and value
+    $('#elementId').css('background-color', 'red');
 
-// css() with an object
-$('#elementId').css({
-  'backgroundColor': 'blue',
-  'fontSize': '16px'
-});
+    // css() with an object
+    $('#elementId').css({
+      'backgroundColor': 'blue',
+      'fontSize': '16px'
+    });
 
-// text()
-$('#elementId').text('This is a sample text');
+    // text()
+    $('#elementId').text('This is a sample text');
 
-// attr()
-$('#elementId').attr('data-custom', 'customValue');
+    // attr()
+    $('#elementId').attr('data-custom', 'customValue');
 
-// val()
-$('#inputElement').val('This is a new value');
+    // val()
+    $('#inputElement').val('This is a new value');
+}(jExt);
 ```
 
 [Next: Selectors](selectors.md)

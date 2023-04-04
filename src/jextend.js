@@ -767,6 +767,5 @@
         }
     };
 
-    window.$ = jExt;
     window.jExt = jExt;
 })(window);

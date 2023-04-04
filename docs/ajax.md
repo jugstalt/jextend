@@ -7,7 +7,7 @@ jExt provides a simple and easy-to-use AJAX method for making HTTP requests, all
 Here's a basic example of making a GET request with jExt:
 
 ``` javascript
-$.ajax({
+jExt.ajax({
   type: 'GET',
   url: 'https://api.example.com/data',
   success: function(data) {
@@ -24,7 +24,7 @@ $.ajax({
 To make a POST request, simply change the type property to 'POST' and provide the data to be sent:
 
 ``` javascript
-$.ajax({
+jExt.ajax({
   type: 'POST',
   url: 'https://api.example.com/data',
   data: {
@@ -45,7 +45,7 @@ $.ajax({
 jExt can automatically parse JSON data based on the response's content type or you can implicitly define the `dataType`:
 
 ``` javascript
-$.ajax({
+jExt.ajax({
   type: 'GET',
   url: 'https://api.example.com/data',
   dataType: 'json',

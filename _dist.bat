@@ -1,7 +1,7 @@
 @echo off
 
-terser .\src\jExt.js -c -m -o dist/jext.min.js
+terser .\src\jextend.js -c -m -o dist/jextend.min.js
 
-terser .\src\jExt.js .\src\jExt-ext.js -c -m -o dist/jext-ext.min.js
+terser .\src\jextend.js .\src\jextend-ext.js -c -m -o dist/jextend-ext.min.js
 
-terser .\src\jExt.js .\src\jExt-ext.js .\src\jExt-ajax.js -c -m -o dist/jext-full.min.js
+terser .\src\jextend.js .\src\jextend-ext.js .\src\jextend-ajax.js -c -m -o dist/jextend-full.min.js

@@ -16,7 +16,7 @@ jExt.fn.setBackgroundColor = function(color) {
 };
 
 // Usage:
-$('.some-class').setBackgroundColor('red');
+jExt('.some-class').setBackgroundColor('red');
 ```
 
 ## Adding custom static methods to jExt
@@ -40,3 +40,14 @@ console.log(total); // 15
 
 By extending jExt with your own custom methods, you can create a more powerful and flexible toolkit tailored to your specific needs. 
 This can help improve the maintainability and reusability of your code.
+
+## Build Extensions for jExtend and jQuery
+
+``` javascript
+(function($) {
+  $.fn.setBackgroundColor = function(color) {
+    this.css('backgroundColor', color);
+    return this;
+  };
+})(window.jExt || window.jQuery)  // depends on what is loaded on the page
+```

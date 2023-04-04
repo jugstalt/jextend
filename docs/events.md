@@ -12,13 +12,13 @@ function clickEventbuttonEventHandlerHandler(e) {
     alert('Button clicked!');
 }
 
-$('button').on('click', buttonEventHandler);
+jExt('button').on('click', buttonEventHandler);
 // or
-$('button').on(['click', '<other events>'], buttonEventHandler);
+jExt('button').on(['click', '<other events>'], buttonEventHandler);
 // or
-$('button').bind('click <other events>', buttonEventHandler);
+jExt('button').bind('click <other events>', buttonEventHandler);
 // or
-$('button').click(buttonEventHandler);
+jExt('button').click(buttonEventHandler);
 ```
 
 ## Unbinding events
@@ -26,7 +26,7 @@ $('button').click(buttonEventHandler);
 Use the `off()` method to unbind an event from an element:
 
 ``` javascript
-$('button').off('click', buttonEventHandler);
+jExt('button').off('click', buttonEventHandler);
 ```
 
 [Next: Ajax](ajax.md)
