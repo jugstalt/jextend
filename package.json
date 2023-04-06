@@ -1,0 +1,30 @@
+{
+  "name": "@jugstalt/jextend",
+  "version": "0.1.2",
+  "description": "A lightweight JavaScript library alternative to jQuery",
+  "main": "src/jextend.js",
+  "files": [
+    "src/",
+    "dist/"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jugstalt/jextend.git"
+  },
+  "keywords": [
+    "javascript",
+    "jQuery",
+    "lightweight",
+    "dom-manipulation",
+    "browser"
+  ],
+  "author": "Jürgen Gstaltmaier",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jugstalt/jextend/issues"
+  },
+  "homepage": "https://github.com/jugstalt/jextend#readme"
+}
