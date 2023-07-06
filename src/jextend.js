@@ -36,6 +36,8 @@
         return new jExtObject([domObj]);
     }
 
+    const _booleanAttributes = ['hidden', 'readonly', 'required', 'disabled', 'autofocus', 'formnovalidate', 'multiple', 'autofocus'];
+
     class jExtEvent {
         constructor(originalEvent) {
             this.originalEvent = originalEvent;
@@ -144,14 +146,36 @@
 
         // Attributes & Data
         attr(name, value) {
-            if (typeof value === "undefined") {
+            const setAttr = (element, attributeName, attributeValue) => {
+                if (_booleanAttributes.includes(attributeName)) {
+                    if (attributeValue === true || attributeValue === "true") {
+                        element.setAttribute(attributeName, attributeName);
+                    } else if (attributeValue === false || attributeValue === "false") {
+                        element.removeAttribute(attributeName);
+                    } else {
+                        element.setAttribute(attributeName, attributeValue);
+                    }
+                } else {
+                    element.setAttribute(attributeName, attributeValue);
+                }
+            };
+
+            if (typeof name === "object") {
+                const attributes = name;
+                for (const key in attributes) {
+                    this._((element) => {
+                        setAttr(element, key, attributes[key]);
+                    });
+                }
+            } else if (typeof value === "undefined") {
                 return this[0].getAttribute(name);
             } else {
                 this._((element) => {
-                    element.setAttribute(name, value);
+                    setAttr(element, name, value);
                 });
-                return this;
             }
+
+            return this;
         }
 
         data(key, value) {

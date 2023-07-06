@@ -1,3 +1,5 @@
+$ = jExt;
+
 $(function () {
   // Create a new <li> element and append it to the end of the list
   const newItem = $("<li>").text("Item 4").appendTo("#demo-list");
@@ -30,6 +32,8 @@ $(function () {
       const itemCount = $("#demo-list li").length + 1;
       $("<li>")
         .text("Item " + itemCount)
+        .attr('attr1',1)
+        .attr({attr2:2, attr3:3})
         .appendTo("#demo-list");
     })
     .appendTo("body");
