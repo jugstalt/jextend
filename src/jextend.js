@@ -23,7 +23,7 @@
     }
 
     function findDOMObjects(selector) {
-        const elements = document.querySelectorAll(__(selector));
+        const elements = document.querySelectorAll(modifySelector(selector));
         return new jExtObject(elements);
     }
 
@@ -38,8 +38,8 @@
         return new jExtObject([domObj]);
     }
 
-    function __(selector) {
-        if (typeof selector !== 'string') {
+    function modifySelector(selector) {
+        if (typeof selector !== "string") {
             return selector;
         }
 
@@ -57,13 +57,21 @@
             selector = selector.replace(matchClass[0], classSelector);
         }
 
-        selector = selector.replace(/:first/g, ':first-of-type');
+        selector = selector.replace(/:first/g, ":first-of-type");
 
         return selector;
     }
 
-
-    const _booleanAttributes = ['hidden', 'readonly', 'required', 'disabled', 'autofocus', 'formnovalidate', 'multiple', 'autofocus'];
+    const _booleanAttributes = [
+        "hidden",
+        "readonly",
+        "required",
+        "disabled",
+        "autofocus",
+        "formnovalidate",
+        "multiple",
+        "autofocus",
+    ];
 
     class jExtEvent {
         constructor(originalEvent) {
@@ -98,9 +106,9 @@
         stopImmediatePropagation() {
             if (this.originalEvent.stopImmediatePropagation) {
                 this.originalEvent.stopImmediatePropagation();
-             } else {
+            } else {
                 this.originalEvent.cancelBubble = true;
-             }
+            }
         }
     }
 
@@ -145,9 +153,11 @@
         }
 
         filter(selector) {
-            selector = __(selector);
+            selector = modifySelector(selector);
             const elements = Array.from(this);
-            const filteredElements = elements.filter(element => element.matches(selector));
+            const filteredElements = elements.filter((element) =>
+                element.matches(selector)
+            );
             return new jExtObject(filteredElements);
         }
 
@@ -155,7 +165,9 @@
             let siblings = [];
             this._((element) => {
                 let elSiblings = Array.from(element.parentNode.children);
-                elSiblings = elSiblings.filter(elSibling => elSibling !== element); // exclude element itself
+                elSiblings = elSiblings.filter(
+                    (elSibling) => elSibling !== element
+                ); // exclude element itself
                 siblings = siblings.concat(elSiblings);
             });
             let siblingObjects = new jExtObject(siblings);
@@ -169,10 +181,14 @@
             if (!selectorOrElement) {
                 // index of the first element within its siblings
                 const firstElement = this[0];
-                return Array.from(firstElement.parentNode.children).indexOf(firstElement);
-            } else if (typeof selectorOrElement === 'string') {
+                return Array.from(firstElement.parentNode.children).indexOf(
+                    firstElement
+                );
+            } else if (typeof selectorOrElement === "string") {
                 // index within the elements matching the given selector
-                const elements = Array.from(document.querySelectorAll(__(selectorOrElement)));
+                const elements = Array.from(
+                    document.querySelectorAll(modifySelector(selectorOrElement))
+                );
                 return elements.indexOf(this[0]);
             } else {
                 // index of the given element within the selected elements
@@ -225,7 +241,10 @@
                 if (_booleanAttributes.includes(attributeName)) {
                     if (attributeValue === true || attributeValue === "true") {
                         element.setAttribute(attributeName, attributeName);
-                    } else if (attributeValue === false || attributeValue === "false") {
+                    } else if (
+                        attributeValue === false ||
+                        attributeValue === "false"
+                    ) {
                         element.removeAttribute(attributeName);
                     } else {
                         element.setAttribute(attributeName, attributeValue);
@@ -255,7 +274,11 @@
 
         data(key, value) {
             if (typeof value === "undefined") {
-                return this[0] ? (this[0].__jExtData ? this[0].__jExtData[key] : null) : null;
+                return this[0]
+                    ? this[0].__jExtData
+                        ? this[0].__jExtData[key]
+                        : null
+                    : null;
             } else {
                 this._((element) => {
                     if (!element.__jExtData) {
@@ -363,7 +386,7 @@
             this._((element) => {
                 targetElements._((targetElement) => {
                     targetElement.insertBefore(
-                        element/*.cloneNode(true)*/,
+                        element /*.cloneNode(true)*/,
                         targetElement.firstChild
                     );
                 });
@@ -407,7 +430,7 @@
             const contentElements = jExt(content);
             this._((element) => {
                 contentElements._((contentElement) => {
-                        element.appendChild(contentElement/*.cloneNode(true)*/);
+                    element.appendChild(contentElement /*.cloneNode(true)*/);
                 });
             });
 
@@ -420,7 +443,7 @@
                 let firstChild = element.firstChild;
                 contentElements._((contentElement) => {
                     element.insertBefore(
-                        contentElement/*.cloneNode(true)*/,
+                        contentElement /*.cloneNode(true)*/,
                         firstChild
                     );
                 });
@@ -440,7 +463,7 @@
 
         // find Objects
         closest(selector) {
-            selector = __(selector);
+            selector = modifySelector(selector);
             const closestElements = [];
 
             for (let i = 0; i < this.length; i++) {
@@ -470,7 +493,7 @@
         }
 
         find(selector) {
-            selector = __(selector);
+            selector = modifySelector(selector);
             const foundElements = [];
 
             for (let i = 0; i < this.length; i++) {
@@ -485,7 +508,7 @@
         }
 
         children(selector) {
-            selector = __(selector);
+            selector = modifySelector(selector);
             const childElements = [];
 
             for (let i = 0; i < this.length; i++) {
@@ -520,7 +543,7 @@
         prevAll() {
             const siblings = [];
             let el = this[0];
-            while (el = el.previousElementSibling) {
+            while ((el = el.previousElementSibling)) {
                 siblings.push(el);
             }
             return new jExtObject(siblings);
@@ -536,23 +559,24 @@
         nextAll() {
             const siblings = [];
             let el = this[0];
-            while (el = el.nextElementSibling) {
+            while ((el = el.nextElementSibling)) {
                 siblings.push(el);
             }
             return new jExtObject(siblings);
         }
 
         is(selector) {
-            selector = __(selector);
+            selector = modifySelector(selector);
             const el = this[0];
             if (!el || selector === undefined) {
                 return false;
             }
 
-            if (typeof selector === 'string') {
+            if (typeof selector === "string") {
                 if (el.matches) {
                     return el.matches(selector);
-                } else if (el.msMatchesSelector) { // Fallback for IE
+                } else if (el.msMatchesSelector) {
+                    // Fallback for IE
                     return el.msMatchesSelector(selector);
                 }
             }
@@ -626,7 +650,9 @@
             return this.on("keyup", handler);
         }
 
-        mouseleave(handler) { return this.on("mouseleave", handler); }
+        mouseleave(handler) {
+            return this.on("mouseleave", handler);
+        }
 
         scroll(handler) {
             return this.on("scroll", handler);
@@ -908,77 +934,87 @@
 
         // Document
         ready = function (callback) {
-            if (document.readyState !== 'loading') {
+            if (document.readyState !== "loading") {
                 callback();
             } else {
-                document.addEventListener('DOMContentLoaded', callback);
+                document.addEventListener("DOMContentLoaded", callback);
             }
             return this;
-        }
+        };
 
         // Effects
         fadeIn = function (duration = 400) {
             this._((element) => {
-                element.style.display = '';
+                element.style.display = "";
                 element.style.transition = `opacity ${duration}ms`;
-                setTimeout(() => element.style.opacity = '1', 0);
+                setTimeout(() => (element.style.opacity = "1"), 0);
             });
             return this;
-        }
+        };
 
         fadeOut = function (duration = 400) {
             this._((element) => {
                 element.style.transition = `opacity ${duration}ms`;
                 setTimeout(() => {
-                    element.style.opacity = '0';
-                    element.addEventListener('transitionend', () => {
-                        if (element.style.opacity === '0') {
-                            element.style.display = 'none';
-                        }
-                    }, { once: true });
+                    element.style.opacity = "0";
+                    element.addEventListener(
+                        "transitionend",
+                        () => {
+                            if (element.style.opacity === "0") {
+                                element.style.display = "none";
+                            }
+                        },
+                        { once: true }
+                    );
                 }, 0);
             });
             return this;
-        }
+        };
 
         slideUp = function (time = 400) {
             this._((element) => {
-                element.animate([
-                    // keyframes
-                    { height: getComputedStyle(element).height },
-                    { height: '0px' }
-                ], {
-                    // timing options
-                    duration: time,
-                    easing: 'ease',
-                    fill: 'forwards'
-                });
+                element.animate(
+                    [
+                        // keyframes
+                        { height: getComputedStyle(element).height },
+                        { height: "0px" },
+                    ],
+                    {
+                        // timing options
+                        duration: time,
+                        easing: "ease",
+                        fill: "forwards",
+                    }
+                );
             });
             return this;
-        }
+        };
 
         slideDown = function (time = 400) {
             this._((element) => {
-                element.style.height = '0px';
-                element.style.display = ''; // reset display property
-                element.animate([
-                    // keyframes
-                    { height: '0px' },
-                    { height: getComputedStyle(element).height }
-                ], {
-                    // timing options
-                    duration: time,
-                    easing: 'ease',
-                    fill: 'forwards'
-                });
+                element.style.height = "0px";
+                element.style.display = ""; // reset display property
+                element.animate(
+                    [
+                        // keyframes
+                        { height: "0px" },
+                        { height: getComputedStyle(element).height },
+                    ],
+                    {
+                        // timing options
+                        duration: time,
+                        easing: "ease",
+                        fill: "forwards",
+                    }
+                );
             });
             return this;
-        }
+        };
 
         slideToggle = function (time = 400) {
             this._((element) => {
                 const displayStyle = getComputedStyle(element).display;
-                if (displayStyle === 'none' || displayStyle === '') {
+                if (displayStyle === "none" || displayStyle === "") {
                     // If element is currently not visible, slide it down
                     this.slideDown(time);
                 } else {
@@ -987,7 +1023,7 @@
                 }
             });
             return this;
-        }
+        };
     }
 
     jExt.fn = jExtObject.prototype;
