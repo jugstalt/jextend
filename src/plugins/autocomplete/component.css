@@ -1,0 +1,59 @@
+.jExt-autocomplete {
+  box-sizing: border-box;
+  width: 500px;
+  min-width: 500px;
+  transition: width 0.3s ease;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+}
+
+.jExt-autocomplete.focused {
+  width: 700px;
+}
+
+.jExt-autocomplete div.controls {
+  display: grid;
+  grid-template-columns: auto 40px;
+  height: 40px;
+}
+
+.jExt-autocomplete div.controls input {
+  /* Don't use height on input elements. Use line-height and padding */
+  display: inline-block;
+  line-height: 30px;
+  padding: 3px 5px;
+}
+
+.jExt-autocomplete div.controls input.focused {
+  width: 700px;
+}
+
+.jExt-autocomplete div.controls span.clear {
+  width: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.jExt-autocomplete ul.suggestions {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 2px 0 0 0;
+}
+
+.jExt-autocomplete ul.suggestions li {
+  padding: 5px 7px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.jExt-autocomplete ul.suggestions li > * {
+  /* disable triggering events for all child elements */
+  pointer-events: none;
+}
+
+.jExt-autocomplete ul.suggestions li.selected {
+  color: red;
+}
+
+.jExt-autocomplete ul.suggestions li span.highlight {
+  font-weight: bold;
+}
