@@ -118,6 +118,10 @@ pDebounce.promise = (function_) => {
     debounce: false,
     // The delay in milliseconds before fetching autocomplete suggestions.
     debounceDelay: 500,
+    // Specifies the threshold of the viewport height that the lower boundary of the GUI should not exceed.
+    // If the autocomplete GUI surpasses this threshold, its suggestion container will be resized,
+    // and a scrollbar will be displayed to handle the overflow.
+    yThresholdViewport: 100,
   };
 
   Autocomplete.prototype = {
@@ -154,6 +158,12 @@ pDebounce.promise = (function_) => {
         .addClass("suggestions")
         .css("display", "none")
         .appendTo($elem);
+
+      $elem.css({
+        "max-height": `calc(${this.settings.yThresholdViewport}vh - ${
+          $elem.offset().top
+        }px)`,
+      });
 
       this.bindEvents();
     },
@@ -286,6 +296,12 @@ pDebounce.promise = (function_) => {
 
           this.selectSuggestionByIdx(nextIdx);
           this.selectedSuggestionIdx = nextIdx;
+
+          // Enable scrolling to position only when the up/down arrows are pressed,
+          // preventing unintended scrolling when the mouse is hovered over the suggestions.
+          this.scrollToSuggestion(
+            this.getSuggestionByIdx(this.selectedSuggestionIdx)
+          );
           break;
         case "Escape":
           this.closeSuggestions();
@@ -571,6 +587,12 @@ pDebounce.promise = (function_) => {
      */
     getIdxBySuggestion: function ($elem) {
       return this.$suggestionContainer.children().index($elem);
+    },
+
+    scrollToSuggestion: function ($elem) {
+      this.$suggestionContainer[0].scrollTop =
+        $elem.position().top -
+        $("li:first", this.$suggestionContainer).position().top;
     },
 
     /**

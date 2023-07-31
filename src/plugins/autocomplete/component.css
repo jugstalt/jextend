@@ -1,9 +1,63 @@
+/*
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  --stripe-color: rgba(
+    0,
+    0,
+    0,
+    0.2
+  );
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(
+    to bottom,
+    var(--stripe-color) 10%,
+    transparent 10%,
+    transparent 20%,
+    var(--stripe-color) 20%,
+    var(--stripe-color) 30%,
+    transparent 30%,
+    transparent 40%,
+    var(--stripe-color) 40%,
+    var(--stripe-color) 50%,
+    transparent 50%,
+    transparent 60%,
+    var(--stripe-color) 60%,
+    var(--stripe-color) 70%,
+    transparent 70%,
+    transparent 80%,
+    var(--stripe-color) 80%,
+    var(--stripe-color) 90%,
+    transparent 90%
+  );
+  background-size: 100% 100%; /* The background size will cover the entire viewport
+} 
+
 .jExt-autocomplete {
+  position: absolute;
+  top: 50px;
+  left: 0;
+} */
+
+/* Delete until here */
+
+.jExt-autocomplete {
+  display: grid;
+  grid-template-rows: 40px 1fr;
   box-sizing: border-box;
   width: 500px;
   min-width: 500px;
+  min-height: 40px;
   transition: width 0.3s ease;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+  background-color: white;
 }
 
 .jExt-autocomplete.focused {
@@ -28,6 +82,7 @@
 }
 
 .jExt-autocomplete div.controls span.clear {
+  background-color: inherit;
   width: 40px;
   line-height: 40px;
   cursor: pointer;
@@ -35,9 +90,11 @@
 }
 
 .jExt-autocomplete ul.suggestions {
+  background-color: inherit;
   list-style-type: none;
   padding-left: 0;
   margin: 2px 0 0 0;
+  overflow-y: auto;
 }
 
 .jExt-autocomplete ul.suggestions li {
